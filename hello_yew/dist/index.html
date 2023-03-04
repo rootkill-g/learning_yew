@@ -1,10 +1,22 @@
-<!DOCTYPE ><html><head>
+<!DOCTYPE html><html><head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Tinos&amp;display=swap" rel="stylesheet">
     <title>Hello Yew</title>
+    <style>
+      html, body {
+        background-color: #131313;
+        color: #e5e5e5;
+        font-family: Tinos;
+      }
+    </style>
   
-<link rel="preload" href="/hello_yew-a6339045dc81d00e_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/hello_yew-a6339045dc81d00e.js"></head>
-<body>
-<script type="module">import init from '/hello_yew-a6339045dc81d00e.js';init('/hello_yew-a6339045dc81d00e_bg.wasm');</script><script>(function () {
+<link rel="preload" href="/hello_yew-a5b92d8339109fc9_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/hello_yew-a5b92d8339109fc9.js"></head>
+  <body>
+  
+
+<script type="module">import init from '/hello_yew-a5b92d8339109fc9.js';init('/hello_yew-a5b92d8339109fc9_bg.wasm');</script><script>(function () {
     var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     var url = protocol + '//' + window.location.host + '/_trunk/ws';
     var poll_interval = 5000;
