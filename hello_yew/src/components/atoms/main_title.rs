@@ -47,7 +47,7 @@ pub fn main_title(props: &Props) -> Html {
     )
     .ok();
 
-    props.onload.emit("Component Loaded!".to_owned());
+    props.onload.emit("Main Title Component Loaded!".to_owned());
 
     html! {
         <div class={style_css}>

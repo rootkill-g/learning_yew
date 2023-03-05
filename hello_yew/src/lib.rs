@@ -37,7 +37,7 @@ pub fn App() -> Html {
 
     let class_p = "paragraph";
 
-    let msg: Option<&str> = None;
+    let msg: Option<&str> = Some("This website is for learning Yew.rs");
 
     let num_list = vec![
         "Rust Programming Language",
@@ -64,6 +64,24 @@ pub fn App() -> Html {
         })
     };
 
+    let first_render = use_state(|| true);
+
+    use_effect(move || {
+        // This code will run :
+        // - First Render
+        // - All re-renders
+        // If auth token exists and if its our first render
+        // get all the users todo tasks
+        if *first_render {
+            // This only runs on first render
+            // This shouldn't run on every state refresh and re-render
+            // Do whatever data load to be done on first render
+            first_render.set(false);
+        }
+
+        || {}
+    });
+
     html! {
         <>
         <ContextProvider<User> context={user_state.deref().clone()}>
@@ -83,7 +101,7 @@ pub fn App() -> Html {
                     <p>{"No messages to show"}</p>
                 }
 
-                <ul class="item-list" title="Crates Used">
+                <ul class="item-list" title="Technology & Crates Used">
                     { to_li(num_list) }
                 </ul>
             </div>
