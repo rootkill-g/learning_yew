@@ -33,11 +33,13 @@ pub fn App() -> Html {
 
     let css_file = Style::new(CSS_FILE).unwrap();
 
+    let main_title_load = Callback::from(|message: String| log!(message));
+
     html! {
         <>
             <div class={css_file}>
 
-                <MainTitle title="Yew is Cool" color={Color::Pink} />
+                <MainTitle title="Yew is Cool" color={Color::Pink} on_load={main_title_load} />
 
                 if class_p == "paragraph" {
                     <p>{"We are going Full Stack Now"}</p>

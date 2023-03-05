@@ -5,6 +5,7 @@ use yew::prelude::*;
 pub struct Props {
     pub title: String,
     pub color: Color,
+    pub on_load: Callback<String>,
 }
 
 #[allow(dead_code)]
@@ -45,6 +46,8 @@ pub fn main_title(props: &Props) -> Html {
         "#
     )
     .ok();
+
+    props.on_load.emit("Component Loaded!".to_owned());
 
     html! {
         <div class={style_css}>
