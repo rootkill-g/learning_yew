@@ -1,23 +1,25 @@
 h1 {
-background-color: #000;
-color: white;
+  background-color: #000;
+  color: white;
 }
 
 p {
-background-color: #fff;
-color: black;
+  background-color: #fff;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .item-list {
-background-color: #eee;
-color: #555;
+  background-color: #eee;
+  color: #555;
 }
 
 ul {
-list-style-position: inside;
-padding-left: 0px;
+  list-style-position: inside;
+  padding-left: 0px;
 }
 
 li {
-border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
