@@ -1,13 +1,18 @@
-h1 {
+h1 span {
   background-color: #000;
   color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
 }
 
 p {
-  background-color: #fff;
+  background-color: #eee;
   color: black;
   font-size: 20px;
   font-weight: 700;
+  border-radius: 5px;
+  margin: 20px 35%;
+  padding: 5px;
 }
 
 .item-list {
@@ -18,20 +23,37 @@ p {
 ul {
   list-style-position: inside;
   padding-left: 0px;
+  margin: 5px 35%;
+  border-radius: 5px;
+}
+
+ul[title]::before {
+  content: attr(title);
+  display: block;
+  font-weight: bold;
+  padding: 5px;
+  color: rosybrown;
 }
 
 li {
-  border-bottom: 0.1px solid #ddd;
+  text-align: left;
+  border-top: 0.1px solid #ddd;
+  padding-left: 20px;
 }
 
 input {
   margin-right: 10px;
   border: 0.1px solid rgba(0, 0, 0, 1);
   background-color: linen;
+  padding: 5px 5px;
+  border-radius: 5px;
 }
 
 button {
   border: 0.1px solid rgba(0, 0, 0, 1);
   background-color: lightcyan;
   color: #232323;
+  border-radius: 5px;
+  padding: 5px 5px;
 }
+

@@ -5,7 +5,7 @@ use yew::prelude::*;
 pub struct Props {
     pub title: String,
     pub color: Color,
-    pub on_load: Callback<String>,
+    pub onload: Callback<String>,
 }
 
 #[allow(dead_code)]
@@ -47,12 +47,12 @@ pub fn main_title(props: &Props) -> Html {
     )
     .ok();
 
-    props.on_load.emit("Component Loaded!".to_owned());
+    props.onload.emit("Component Loaded!".to_owned());
 
     html! {
         <div class={style_css}>
-        <h1 class={class}>{"Hello This Is Main Title:"}</h1>
-        <h2 class={props.color.map_to_css()}>{&props.title}</h2>
+            <h1 class={class}><span>{"Hello This Is Main Title"}</span></h1>
+            <h2 class={props.color.map_to_css()}>{&props.title}</h2>
         </div>
     }
 }
