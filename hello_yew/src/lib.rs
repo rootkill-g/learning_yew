@@ -1,5 +1,9 @@
+mod components;
+
+use components::atoms::main_title::{Color, MainTitle};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
+use stylist::{yew::styled_component, Style};
 use yew::prelude::*;
 
 #[derive(Serialize, Deserialize)]
@@ -8,7 +12,9 @@ struct LangName {
     fav_lang: String,
 }
 
-#[function_component]
+const CSS_FILE: &str = include_str!("main.css");
+
+#[styled_component]
 pub fn App() -> Html {
     let name = "etch1000";
     let lang_name = LangName {
@@ -19,29 +25,34 @@ pub fn App() -> Html {
     log!("My name is :", name);
     log!(serde_json::to_string_pretty(&lang_name).ok());
 
-    let class = "header title";
     let class_p = "paragraph";
 
     let msg: Option<&str> = None;
 
     let num_list = (1..=10).collect::<Vec<_>>();
 
+    let css_file = Style::new(CSS_FILE).unwrap();
+
     html! {
         <>
-        <h1 class={class}>{"Hello Yew"}</h1>
-        if class_p == "paragraph" {
-            <p>{"We are going Full Stack Now"}</p>
-        }
+            <div class={css_file}>
 
-        if let Some(message) = msg {
-            <p>{message}</p>
-        } else {
-            <p>{"No messages to show"}</p>
-        }
+                <MainTitle title="Yew is Cool" color={Color::Pink} />
 
-        <ul class="item-list">
-            { to_li(num_list) }
-        </ul>
+                if class_p == "paragraph" {
+                    <p>{"We are going Full Stack Now"}</p>
+                }
+
+                if let Some(message) = msg {
+                    <p>{message}</p>
+                } else {
+                    <p>{"No messages to show"}</p>
+                }
+
+                <ul class="item-list">
+                    { to_li(num_list) }
+                </ul>
+            </div>
         </>
     }
 }
