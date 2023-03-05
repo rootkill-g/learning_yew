@@ -1,13 +1,15 @@
 mod components;
+mod router;
 
-use std::ops::Deref;
-
+use crate::router::{switch, Route};
 use components::atoms::main_title::{Color, MainTitle};
 use components::molecules::custom_form::{CustomForm, Data};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
+use std::ops::Deref;
 use stylist::{yew::styled_component, Style};
 use yew::{prelude::*, ContextProvider};
+use yew_router::prelude::*;
 
 #[derive(Serialize, Deserialize)]
 struct LangName {
@@ -105,6 +107,9 @@ pub fn App() -> Html {
                     { to_li(num_list) }
                 </ul>
             </div>
+            <BrowserRouter>
+                <Switch<Route> render={switch} />
+            </BrowserRouter>
         </ContextProvider<User>>
         </>
     }
