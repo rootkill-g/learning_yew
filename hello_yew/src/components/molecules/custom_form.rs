@@ -1,41 +1,51 @@
 use std::ops::Deref;
 
 use crate::components::atoms::{custom_button::CustomButton, text_input::TextInput};
-use gloo::console::log;
+// use gloo::console::log;
 use yew::prelude::*;
 
 #[derive(Default, Clone)]
-struct Data {
-    username: String,
-    click_counter: u32,
+pub struct Data {
+    pub username: String,
+    pub favorite_language: String,
+}
+
+#[derive(Properties, PartialEq)]
+pub struct Props {
+    pub onsubmit: Callback<Data>,
 }
 
 #[function_component(CustomForm)]
-pub fn custom_form() -> Html {
+pub fn custom_form(props: &Props) -> Html {
     let state = use_state(|| Data::default());
 
     let cloned_state = state.clone();
     let username_changed = Callback::from(move |username: String| {
-        cloned_state.set(Data {
-            username,
-            ..cloned_state.deref().clone()
-        });
+        let mut data = cloned_state.deref().clone();
+        data.username = username;
+        cloned_state.set(data);
     });
 
     let cloned_state = state.clone();
-    let button_clicked = Callback::from(move |_| {
+    let language_changed = Callback::from(move |language| {
         let mut data = cloned_state.deref().clone();
-        data.click_counter += 1;
+        data.favorite_language = language;
         cloned_state.set(data);
-        log!("Button was clicked");
+    });
+
+    let cloned_state = state.clone();
+    let form_onsubmit = props.onsubmit.clone();
+    let onsubmit = Callback::from(move |event: SubmitEvent| {
+        event.prevent_default();
+        let data = cloned_state.deref().clone();
+        form_onsubmit.emit(data);
     });
 
     html! {
-        <div>
+        <form onsubmit={onsubmit}>
             <TextInput name="username" handle_onchange={username_changed} />
-            <CustomButton label="Submit" onclick={button_clicked} />
-            <p>{"Username : "}{&state.username}</p>
-            <p>{"Button click counter : "}{state.click_counter}</p>
-        </div>
+            <TextInput name="favorite_language" handle_onchange={language_changed} />
+            <CustomButton label="Submit" />
+        </form>
     }
 }

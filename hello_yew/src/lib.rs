@@ -1,7 +1,7 @@
 mod components;
 
 use components::atoms::main_title::{Color, MainTitle};
-use components::molecules::custom_form::CustomForm;
+use components::molecules::custom_form::{CustomForm, Data};
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
 use stylist::{yew::styled_component, Style};
@@ -36,13 +36,18 @@ pub fn App() -> Html {
 
     let main_title_load = Callback::from(|message: String| log!(message));
 
+    let custom_form_submit = Callback::from(|data: Data| {
+        log!("Username :", data.username);
+        log!("Favorite Language :", data.favorite_language);
+    });
+
     html! {
         <>
             <div class={css_file}>
 
                 <MainTitle title="Yew is Cool" color={Color::Pink} on_load={main_title_load} />
 
-                <CustomForm />
+                <CustomForm onsubmit={custom_form_submit} />
 
                 if class_p == "paragraph" {
                     <p>{"We are going Full Stack Now"}</p>

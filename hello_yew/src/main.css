@@ -21,5 +21,17 @@ ul {
 }
 
 li {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0.1px solid #ddd;
+}
+
+input {
+  margin-right: 10px;
+  border: 0.1px solid rgba(0, 0, 0, 1);
+  background-color: linen;
+}
+
+button {
+  border: 0.1px solid rgba(0, 0, 0, 1);
+  background-color: lightcyan;
+  color: #232323;
 }
