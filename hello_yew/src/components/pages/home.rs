@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use yew_router::prelude::use_navigator;
+use yew_router::prelude::*;
 
 use crate::router::Route;
 
@@ -7,6 +7,7 @@ use crate::router::Route;
 pub fn home() -> Html {
     let navigator = use_navigator().unwrap();
     let onclick = Callback::from(move |_| navigator.push(&Route::Hello));
+
     html! {
         <div>
         <h1>{"Hello This is Home"}</h1>
